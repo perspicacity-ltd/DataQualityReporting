@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Data Quality Dynamic Reporting", "Data Quality Dynamic Reporting\Data Quality Dynamic Reporting.rptproj", "{4A74776B-9A4F-40A8-8855-81E215B7549E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A74776B-9A4F-40A8-8855-81E215B7549E}.Debug|Default.ActiveCfg = Debug
+		{4A74776B-9A4F-40A8-8855-81E215B7549E}.Debug|Default.Build.0 = Debug
+		{4A74776B-9A4F-40A8-8855-81E215B7549E}.Debug|Default.Deploy.0 = Debug
+		{4A74776B-9A4F-40A8-8855-81E215B7549E}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{4A74776B-9A4F-40A8-8855-81E215B7549E}.DebugLocal|Default.Build.0 = DebugLocal
+		{4A74776B-9A4F-40A8-8855-81E215B7549E}.Release|Default.ActiveCfg = Release
+		{4A74776B-9A4F-40A8-8855-81E215B7549E}.Release|Default.Build.0 = Release
+		{4A74776B-9A4F-40A8-8855-81E215B7549E}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {93D24B71-DE0D-447D-820F-28340DB34040}
+	EndGlobalSection
+EndGlobal
