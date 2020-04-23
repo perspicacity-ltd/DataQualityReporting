@@ -1,35 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--******************************************************** © Copyright & Licensing ****************************************************************
-© 2018 Perspicacity Ltd
-
-This code / file is part of Perspicacity's DataQualityReporting suite.
-
-Perspicacity's DataQualityReporting suite is free software: you can 
-redistribute it and/or modify it under the terms of the GNU Affero 
-General Public License as published by the Free Software Foundation, 
-either version 3 of the License, or (at your option) any later version.
-
-Perspicacity's DataQualityReporting suite is distributed in the hope 
-that it will be useful, but WITHOUT ANY WARRANTY; without even the 
-implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
-See the GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-A full copy of this code can be found at https://github.com/perspicacity-ltd/DataQualityReporting
-
-You may also be interested in the other repositories at https://github.com/perspicacity-ltd
-
-Original Work Created Date:	30/03/2018
-Original Work Created By:	  Perspicacity Ltd (Kelly Roberts & Matthew Bishop)
-Original Work Contact:		  07545 878906
-Original Work Contact:		  matthew.bishop@perspicacityltd.co.uk
-Description:				        The detail report for a multiple records within the Data Quality 
-                            Reporting suite
-                            This report provides the row level detail for a single data quality
-                            measure for multiple records (identity type IDs)
-**************************************************************************************************************************************************-->
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -247,7 +216,7 @@ Description:				        The detail report for a multiple records within the Data
           </QueryParameter>
         </QueryParameters>
         <CommandText>SELECT		*
-FROM		DataQualityLAS_Dynamic.DataQuality.DQ_Measures m
+FROM		DataQuality_DynamicReporting.DataQuality.DQ_Measures m
 WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
       </Query>
       <Fields>
@@ -306,18 +275,6 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
         <Field Name="SecondsToCorrect">
           <DataField>SecondsToCorrect</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="SQL_Script">
-          <DataField>SQL_Script</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="SQL_Numerator_SELECT">
-          <DataField>SQL_Numerator_SELECT</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="SQL_Denominator_SELECT">
-          <DataField>SQL_Denominator_SELECT</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -536,7 +493,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>DQ Linked Measures</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -548,7 +508,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -567,7 +527,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>Confidence</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -579,7 +542,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -598,7 +561,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>Primary Identity Type Id</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -610,7 +576,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -629,7 +595,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>Primary Identity Type Record Id</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -641,7 +610,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -660,7 +629,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field1", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -672,7 +644,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -691,7 +663,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field1", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -703,7 +678,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -722,7 +697,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field1", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -734,7 +712,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -753,7 +731,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field2", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -765,7 +746,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -784,7 +765,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field2", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -796,7 +780,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -815,7 +799,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field2", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -827,7 +814,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -846,7 +833,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field3", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -858,7 +848,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -877,7 +867,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field3", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -889,7 +882,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -908,7 +901,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field3", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -920,7 +916,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -939,7 +935,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field4", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -951,7 +950,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -970,7 +969,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field4", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -982,7 +984,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1001,7 +1003,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field4", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1013,7 +1018,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1032,7 +1037,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field5", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1044,7 +1052,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1063,7 +1071,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field5", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1075,7 +1086,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1094,7 +1105,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field5", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1106,7 +1120,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1125,7 +1139,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field6", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1137,7 +1154,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1156,7 +1173,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field6", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1168,7 +1188,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1187,7 +1207,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field6", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1199,7 +1222,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1218,7 +1241,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field7", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1230,7 +1256,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1249,7 +1275,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field7", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1261,7 +1290,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1280,7 +1309,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field7", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1292,7 +1324,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1311,7 +1343,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field8", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1323,7 +1358,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1342,7 +1377,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field8", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1354,7 +1392,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1373,7 +1411,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field8", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1385,7 +1426,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1404,7 +1445,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field9", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1416,7 +1460,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1435,7 +1479,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field9", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1447,7 +1494,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1466,7 +1513,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field9", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1478,7 +1528,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1497,7 +1547,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field10", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1509,7 +1562,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1528,7 +1581,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field10", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1540,7 +1596,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1559,7 +1615,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field10", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1571,7 +1630,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1590,7 +1649,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field11", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1602,7 +1664,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1621,7 +1683,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field11", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1633,7 +1698,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1652,7 +1717,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field11", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1664,7 +1732,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1683,7 +1751,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field12", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1695,7 +1766,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1714,7 +1785,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field12", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1726,7 +1800,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1745,7 +1819,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field12", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1757,7 +1834,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1776,7 +1853,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field13", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1788,7 +1868,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1807,7 +1887,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field13", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1819,7 +1902,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1838,7 +1921,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field13", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1850,7 +1936,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1869,7 +1955,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field14", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1881,7 +1970,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1900,7 +1989,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field14", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1912,7 +2004,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1931,7 +2023,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field14", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1943,7 +2038,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1962,7 +2057,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field15", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1974,7 +2072,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1993,7 +2091,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field15", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2005,7 +2106,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2024,7 +2125,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field15", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2036,7 +2140,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2055,7 +2159,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field16", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2067,7 +2174,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2086,7 +2193,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field16", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2098,7 +2208,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2117,7 +2227,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field16", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2129,7 +2242,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2148,7 +2261,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field17", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2160,7 +2276,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2179,7 +2295,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field17", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2191,7 +2310,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2210,7 +2329,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field17", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2222,7 +2344,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2241,7 +2363,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field18", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2253,7 +2378,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2272,7 +2397,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field18", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2284,7 +2412,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2303,7 +2431,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field18", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2315,7 +2446,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2334,7 +2465,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field19", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2346,7 +2480,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2365,7 +2499,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field19", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2377,7 +2514,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2396,7 +2533,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field19", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2408,7 +2548,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2427,7 +2567,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field20", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2439,7 +2582,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2458,7 +2601,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field20", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2470,7 +2616,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2489,7 +2635,10 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Lookup("Field20", Fields!GenericFieldName.Value, Fields!FieldName.Value, "MeasureWidths")</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2501,7 +2650,7 @@ WHERE		DQ_MeasureId = @prm_DQ_MeasureId</CommandText>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>

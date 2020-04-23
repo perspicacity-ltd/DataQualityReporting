@@ -1,36 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--******************************************************** © Copyright & Licensing ****************************************************************
-© 2018 Perspicacity Ltd
-
-This code / file is part of Perspicacity's DataQualityReporting suite.
-
-Perspicacity's DataQualityReporting suite is free software: you can 
-redistribute it and/or modify it under the terms of the GNU Affero 
-General Public License as published by the Free Software Foundation, 
-either version 3 of the License, or (at your option) any later version.
-
-Perspicacity's DataQualityReporting suite is distributed in the hope 
-that it will be useful, but WITHOUT ANY WARRANTY; without even the 
-implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
-See the GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-A full copy of this code can be found at https://github.com/perspicacity-ltd/DataQualityReporting
-
-You may also be interested in the other repositories at https://github.com/perspicacity-ltd
-
-Original Work Created Date:	30/03/2018
-Original Work Created By:	  Perspicacity Ltd (Kelly Roberts & Matthew Bishop)
-Original Work Contact:		  07545 878906
-Original Work Contact:		  matthew.bishop@perspicacityltd.co.uk
-Description:				        The summary report for the Data Quality Reporting suite
-                            This report provides the measured prevalance of each Data
-                            Quality measure, with drill down to the detail for an 
-                            individual DQ measure and filters for DQ profiles and
-                            dimensions from the DQ dimension groups
-**************************************************************************************************************************************************-->
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -49,7 +17,7 @@ Description:				        The summary report for the Data Quality Reporting suite
       <Query>
         <DataSourceName>DataSource1</DataSourceName>
         <CommandText>SELECT		*
-FROM		[DataQualityLAS_Dynamic].[DataQuality].[DQ_Profiles]
+FROM		DataQuality_DynamicReporting.[DataQuality].[DQ_Profiles]
 Order by	ProfileName</CommandText>
       </Query>
       <Fields>
@@ -72,8 +40,8 @@ FROM		(
 			--UNION
 			SELECT		Distinct Directorate --= CASE WHEN Directorate = 'N/A' THEN '' ELSE Directorate END
 						,OrderBy = CASE WHEN Directorate = 'N/A or Missing Value' THEN '1' ELSE '2' END
-			FROM		DataQualityLAS_Dynamic.DataQuality.DQ_DimensionGroups dg
-			JOIN		DataQualityLAS_Dynamic.DataQuality.DQ_MeasureDimensionHistory mdh
+			FROM		DataQuality_DynamicReporting.DataQuality.DQ_DimensionGroups dg
+			JOIN		DataQuality_DynamicReporting.DataQuality.DQ_MeasureDimensionHistory mdh
 							ON dg.DQ_DimensionGroupId = mdh.DQ_DimensionGroupId
 							AND mdh.LastRun = 1
 			) u
@@ -102,8 +70,8 @@ FROM		(
 			SELECT		Distinct CostCentreValue = CostCentre
 						,CostCentre--= CASE WHEN CostCentre = 'N/A' THEN '' ELSE CostCentre END
 						,OrderBy = CASE WHEN CostCentre = 'N/A or Missing Value' THEN '1' ELSE '2' END
-			FROM		DataQualityLAS_Dynamic.DataQuality.DQ_DimensionGroups dg
-			JOIN		DataQualityLAS_Dynamic.DataQuality.DQ_MeasureDimensionHistory mdh
+			FROM		DataQuality_DynamicReporting.DataQuality.DQ_DimensionGroups dg
+			JOIN		DataQuality_DynamicReporting.DataQuality.DQ_MeasureDimensionHistory mdh
 							ON dg.DQ_DimensionGroupId = mdh.DQ_DimensionGroupId
 							AND mdh.LastRun = 1
 			WHERE		CostCentre is not null	
@@ -134,8 +102,8 @@ FROM		(
 			--UNION
 			SELECT		Distinct Station --= CASE WHEN Station = 'N/A' THEN '' ELSE Station END
 						,OrderBy = CASE WHEN Station = 'N/A or Missing Value' THEN '1' ELSE '2' END
-			FROM		DataQualityLAS_Dynamic.DataQuality.DQ_DimensionGroups dg
-			JOIN		DataQualityLAS_Dynamic.DataQuality.DQ_MeasureDimensionHistory mdh
+			FROM		DataQuality_DynamicReporting.DataQuality.DQ_DimensionGroups dg
+			JOIN		DataQuality_DynamicReporting.DataQuality.DQ_MeasureDimensionHistory mdh
 							ON dg.DQ_DimensionGroupId = mdh.DQ_DimensionGroupId
 							AND mdh.LastRun = 1
 			WHERE		Station is not null	
@@ -173,16 +141,16 @@ FROM		(
         <CommandText>SELECT		m.DQ_MeasureId
 			,[Measure Name] = m.MeasureName
 			,[Total Records] = sum(NumeratorRowcount)
-FROM		DataQualityLAS_Dynamic.DataQuality.DQ_MeasureDimensionHistory mdh
-JOIN		DataQualityLAS_Dynamic.Dataquality.DQ_Measures m
+FROM		DataQuality_DynamicReporting.DataQuality.DQ_MeasureDimensionHistory mdh
+JOIN		DataQuality_DynamicReporting.Dataquality.DQ_Measures m
 				on mdh.DQ_MeasureId = m.DQ_MeasureId
 LEFT JOIN	(SELECT		distinct DQ_MeasureId	
-			FROM		DataQualityLAS_Dynamic.DataQuality.DQ_MeasureProfiles mp
+			FROM		DataQuality_DynamicReporting.DataQuality.DQ_MeasureProfiles mp
 			WHERE		mp.DQ_ProfileId in (@Prm_Profile)
 			) mp
 				on m.DQ_MeasureId = mp.DQ_MeasureId
 JOIN		(SELECT		dg.DQ_DimensionGroupId
-			FROM		DataQualityLAS_Dynamic.DataQuality.DQ_DimensionGroups dg
+			FROM		DataQuality_DynamicReporting.DataQuality.DQ_DimensionGroups dg
 			WHERE		(isnull(Directorate,'N/A or Missing Value') IN (@Prm_Directorate)) --OR Directorate IS NULL)
 			AND			(isnull(CostCentre,'N/A or Missing Value') IN (@Prm_CostCentre))-- N/A or Missing Value OR CostCentre IS NULL)
 			AND			(isnull(Station,'N/A or Missing Value') IN (@Prm_Station)) -- N/A or Missing Value OR Station IS NULL)
@@ -223,7 +191,7 @@ ORDER BY	DQ_MeasureId</CommandText>
           </QueryParameter>
         </QueryParameters>
         <CommandText>SELECT		dg.DQ_DimensionGroupId, Directorate, CostCentre, Station
-			FROM		DataQualityLAS_Dynamic.DataQuality.DQ_DimensionGroups dg
+			FROM		DataQuality_DynamicReporting.DataQuality.DQ_DimensionGroups dg
 			WHERE		(isnull(Directorate,'N/A or Missing Value') IN (@Prm_Directorate)) --OR Directorate IS NULL)
 			AND			(isnull(CostCentre,'N/A or Missing Value') IN (@Prm_CostCentre))-- N/A or Missing Value OR CostCentre IS NULL)
 			AND			(isnull(Station,'N/A or Missing Value') IN (@Prm_Station)) -- N/A or Missing V</CommandText>
@@ -262,9 +230,9 @@ ORDER BY	DQ_MeasureId</CommandText>
           </QueryParameter>
         </QueryParameters>
         <CommandText>SELECT		mdh.*
-FROM		DataQualityLAS_Dynamic.DataQuality.DQ_MeasureDimensionHistory mdh
+FROM		DataQuality_DynamicReporting.DataQuality.DQ_MeasureDimensionHistory mdh
 JOIN		(SELECT		dg.DQ_DimensionGroupId
-			FROM		DataQualityLAS_Dynamic.DataQuality.DQ_DimensionGroups dg
+			FROM		DataQuality_DynamicReporting.DataQuality.DQ_DimensionGroups dg
 			WHERE		(isnull(Directorate,'N/A or Missing Value') IN (@Prm_Directorate)) --OR Directorate IS NULL)
 			AND			(isnull(CostCentre,'N/A or Missing Value') IN (@Prm_CostCentre))-- N/A or Missing Value OR CostCentre IS NULL)
 			AND			(isnull(Station,'N/A or Missing Value') IN (@Prm_Station)) -- N/A or Missing Value OR Station IS NULL)
@@ -333,7 +301,7 @@ JOIN		(SELECT		dg.DQ_DimensionGroupId
           </QueryParameter>
         </QueryParameters>
         <CommandText>SELECT		dg.DQ_DimensionGroupId
-FROM		DataQualityLAS_Dynamic.DataQuality.DQ_DimensionGroups dg
+FROM		DataQuality_DynamicReporting.DataQuality.DQ_DimensionGroups dg
 WHERE		(isnull(Directorate,'N/A or Missing Value') IN (@Prm_Directorate)) --OR Directorate IS NULL)
 AND			(isnull(CostCentre,'N/A or Missing Value') IN (@Prm_CostCentre))-- N/A or Missing Value OR CostCentre IS NULL)
 AND			(isnull(Station,'N/A or Missing Value') IN (@Prm_Station)) -- N/A or Missing Value OR Station IS NULL)</CommandText>
@@ -398,7 +366,10 @@ AND			(isnull(Station,'N/A or Missing Value') IN (@Prm_Station)) -- N/A or Missi
                               <TextRuns>
                                 <TextRun>
                                   <Value>DQ Measure Id</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -410,7 +381,7 @@ AND			(isnull(Station,'N/A or Missing Value') IN (@Prm_Station)) -- N/A or Missi
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -429,7 +400,10 @@ AND			(isnull(Station,'N/A or Missing Value') IN (@Prm_Station)) -- N/A or Missi
                               <TextRuns>
                                 <TextRun>
                                   <Value>Measure Name</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -441,7 +415,7 @@ AND			(isnull(Station,'N/A or Missing Value') IN (@Prm_Station)) -- N/A or Missi
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -460,7 +434,10 @@ AND			(isnull(Station,'N/A or Missing Value') IN (@Prm_Station)) -- N/A or Missi
                               <TextRuns>
                                 <TextRun>
                                   <Value>Total Records</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -472,7 +449,7 @@ AND			(isnull(Station,'N/A or Missing Value') IN (@Prm_Station)) -- N/A or Missi
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>#6e00be</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
